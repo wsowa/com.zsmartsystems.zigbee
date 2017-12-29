@@ -10,146 +10,159 @@ package com.zsmartsystems.zigbee.zcl.protocol;
 import java.lang.reflect.Constructor;
 
 import com.zsmartsystems.zigbee.zcl.ZclCommand;
-import com.zsmartsystems.zigbee.zcl.protocol.ZclCommandDirection;
-
-import com.zsmartsystems.zigbee.zcl.clusters.basic.ResetToFactoryDefaultsCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.identify.IdentifyCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.identify.IdentifyQueryResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.identify.IdentifyQueryCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.AddGroupCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.AddGroupResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.ViewGroupCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.ViewGroupResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.GetGroupMembershipCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.GetGroupMembershipResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.RemoveGroupCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.RemoveGroupResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.RemoveAllGroupsCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.groups.AddGroupIfIdentifyingCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.AddSceneCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.AddSceneResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.ViewSceneCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.ViewSceneResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.RemoveSceneCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.RemoveSceneResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.RemoveAllScenesCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.RemoveAllScenesResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.StoreSceneCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.StoreSceneResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.RecallSceneCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.GetSceneMembershipResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.scenes.GetSceneMembershipCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.onoff.OffCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.onoff.OnCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.onoff.ToggleCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.MoveToLevelCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.MoveCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.StepCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.StopCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.MoveToLevelWithOnOffCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.MoveWithOnOffCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.StepWithOnOffCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.Stop2Command;
-import com.zsmartsystems.zigbee.zcl.clusters.alarms.ResetAlarmCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.alarms.AlarmCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.alarms.ResetAllAlarmsCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.alarms.GetAlarmResponse;
 import com.zsmartsystems.zigbee.zcl.clusters.alarms.GetAlarmCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.alarms.GetAlarmResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.alarms.ResetAlarmCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.alarms.ResetAlarmLogCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.SetAbsoluteLocationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.DeviceConfigurationResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.SetDeviceConfigurationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.LocationDataResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.GetDeviceConfigurationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.LocationDataNotificationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.GetLocationDataCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.CompactLocationDataNotificationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.RssiResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.RssiPingCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.SendPingsCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.RssiRequestCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.AnchorNodeAnnounceCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.ReportRssiMeasurementsCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.RequestOwnLocationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.commissioning.RestartDeviceCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.commissioning.RestartDeviceResponseResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.commissioning.SaveStartupParametersCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.commissioning.SaveStartupParametersResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.commissioning.RestoreStartupParametersCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.commissioning.RestoreStartupParametersResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.alarms.ResetAllAlarmsCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.basic.ResetToFactoryDefaultsCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveColorCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveHueCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveSaturationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToColorCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToColorTemperatureCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToHueAndSaturationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToHueCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToSaturationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.StepColorCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.StepHueCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.StepSaturationCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.commissioning.ResetStartupParametersCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.commissioning.ResetStartupParametersResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.ImageNotifyCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.QueryNextImageCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.QueryNextImageResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.ImageBlockCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.ImagePageCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.ImageBlockResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.UpgradeEndCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.UpgradeEndResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.QuerySpecificFileCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.QuerySpecificFileResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.commissioning.RestartDeviceCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.commissioning.RestartDeviceResponseResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.commissioning.RestoreStartupParametersCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.commissioning.RestoreStartupParametersResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.commissioning.SaveStartupParametersCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.commissioning.SaveStartupParametersResponse;
 import com.zsmartsystems.zigbee.zcl.clusters.doorlock.LockDoorCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.doorlock.LockDoorResponse;
 import com.zsmartsystems.zigbee.zcl.clusters.doorlock.UnlockDoorCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.doorlock.UnlockDoorResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.thermostat.SetpointRaiseLowerCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.thermostat.GetWeeklyScheduleResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.thermostat.SetWeeklySchedule;
-import com.zsmartsystems.zigbee.zcl.clusters.thermostat.GetRelayStatusLogResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.thermostat.GetWeeklySchedule;
-import com.zsmartsystems.zigbee.zcl.clusters.thermostat.ClearWeeklySchedule;
-import com.zsmartsystems.zigbee.zcl.clusters.thermostat.GetRelayStatusLog;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToHueCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveHueCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.StepHueCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToSaturationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveSaturationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.StepSaturationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToHueAndSaturationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToColorCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveColorCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.StepColorCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.colorcontrol.MoveToColorTemperatureCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iaszone.ZoneEnrollResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.iaszone.ZoneStatusChangeNotificationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iaszone.ZoneEnrollRequestCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.ArmCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.ArmResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.BypassCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.GetZoneIdMapResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.EmergencyCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.GetZoneInformationResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.FireCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.PanicCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.GetZoneIdMapCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iasace.GetZoneInformationCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iaswd.StartWarningCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.iaswd.SquawkCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.general.ReadAttributesCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.general.ReadAttributesResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesUndividedCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesNoResponse;
 import com.zsmartsystems.zigbee.zcl.clusters.general.ConfigureReportingCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.general.ConfigureReportingResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DefaultResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverAttributesCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverAttributesExtended;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverAttributesExtendedResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverAttributesResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverCommandsGenerated;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverCommandsGeneratedResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverCommandsReceived;
+import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverCommandsReceivedResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.general.ReadAttributesCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.general.ReadAttributesResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.general.ReadAttributesStructuredCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.general.ReadReportingConfigurationCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.general.ReadReportingConfigurationResponse;
 import com.zsmartsystems.zigbee.zcl.clusters.general.ReportAttributesCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DefaultResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverAttributesCommand;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverAttributesResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.general.ReadAttributesStructuredCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesNoResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesResponse;
 import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesStructuredCommand;
 import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesStructuredResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverCommandsReceived;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverCommandsReceivedResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverCommandsGenerated;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverCommandsGeneratedResponse;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverAttributesExtended;
-import com.zsmartsystems.zigbee.zcl.clusters.general.DiscoverAttributesExtendedResponse;
-
+import com.zsmartsystems.zigbee.zcl.clusters.general.WriteAttributesUndividedCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.AddGroupCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.AddGroupIfIdentifyingCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.AddGroupResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.GetGroupMembershipCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.GetGroupMembershipResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.RemoveAllGroupsCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.RemoveGroupCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.RemoveGroupResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.ViewGroupCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.groups.ViewGroupResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.ArmCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.ArmResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.BypassCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.EmergencyCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.FireCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.GetZoneIdMapCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.GetZoneIdMapResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.GetZoneInformationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.GetZoneInformationResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.iasace.PanicCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iaswd.SquawkCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iaswd.StartWarningCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iaszone.ZoneEnrollRequestCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.iaszone.ZoneEnrollResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.iaszone.ZoneStatusChangeNotificationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.identify.IdentifyCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.identify.IdentifyQueryCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.identify.IdentifyQueryResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.MoveCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.MoveToLevelCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.MoveToLevelWithOnOffCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.MoveWithOnOffCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.StepCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.StepWithOnOffCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.Stop2Command;
+import com.zsmartsystems.zigbee.zcl.clusters.levelcontrol.StopCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.onoff.OffCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.onoff.OnCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.onoff.ToggleCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.ImageBlockCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.ImageBlockResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.ImageNotifyCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.ImagePageCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.QueryNextImageCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.QueryNextImageResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.QuerySpecificFileCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.QuerySpecificFileResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.UpgradeEndCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.otaupgrade.UpgradeEndResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.AnchorNodeAnnounceCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.CompactLocationDataNotificationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.DeviceConfigurationResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.GetDeviceConfigurationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.GetLocationDataCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.LocationDataNotificationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.LocationDataResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.ReportRssiMeasurementsCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.RequestOwnLocationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.RssiPingCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.RssiRequestCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.RssiResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.SendPingsCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.SetAbsoluteLocationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.rssilocation.SetDeviceConfigurationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.AddSceneCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.AddSceneResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.GetSceneMembershipCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.GetSceneMembershipResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.RecallSceneCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.RemoveAllScenesCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.RemoveAllScenesResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.RemoveSceneCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.RemoveSceneResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.StoreSceneCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.StoreSceneResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.ViewSceneCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.scenes.ViewSceneResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.thermostat.ClearWeeklySchedule;
+import com.zsmartsystems.zigbee.zcl.clusters.thermostat.GetRelayStatusLog;
+import com.zsmartsystems.zigbee.zcl.clusters.thermostat.GetRelayStatusLogResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.thermostat.GetWeeklySchedule;
+import com.zsmartsystems.zigbee.zcl.clusters.thermostat.GetWeeklyScheduleResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.thermostat.SetWeeklySchedule;
+import com.zsmartsystems.zigbee.zcl.clusters.thermostat.SetpointRaiseLowerCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.DeviceInformationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.DeviceInformationResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.EndpointInformationCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.GetEndpointListCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.GetEndpointListResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.GetGroupIdentifiersCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.NetworkJoinEndDeviceCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.NetworkJoinEndDeviceResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.NetworkJoinRouterCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.NetworkJoinRouterResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.NetworkStartCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.NetworkStartResponse;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.NetworkUpdateCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.ResetToFactoryNewCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.ScanCommand;
+import com.zsmartsystems.zigbee.zcl.clusters.touchlink.ScanResponse;
 
 /**
  * Enumeration of ZigBee Cluster Library commands
@@ -170,7 +183,8 @@ public enum ZclCommandType {
      * <p>
      * See {@link AddGroupIfIdentifyingCommand}
      */
-    ADD_GROUP_IF_IDENTIFYING_COMMAND(0x0004, 5, AddGroupIfIdentifyingCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    ADD_GROUP_IF_IDENTIFYING_COMMAND(0x0004, 5, AddGroupIfIdentifyingCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * ADD_GROUP_RESPONSE: Add Group Response
      * <p>
@@ -230,7 +244,8 @@ public enum ZclCommandType {
      * <p>
      * See {@link CompactLocationDataNotificationCommand}
      */
-    COMPACT_LOCATION_DATA_NOTIFICATION_COMMAND(0x000B, 3, CompactLocationDataNotificationCommand.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    COMPACT_LOCATION_DATA_NOTIFICATION_COMMAND(0x000B, 3, CompactLocationDataNotificationCommand.class,
+            ZclCommandDirection.SERVER_TO_CLIENT),
     /**
      * CONFIGURE_REPORTING_COMMAND: Configure Reporting Command
      * <p>
@@ -256,6 +271,18 @@ public enum ZclCommandType {
      */
     DEVICE_CONFIGURATION_RESPONSE(0x000B, 0, DeviceConfigurationResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
     /**
+     * DEVICE_INFORMATION_COMMAND: Device Information Command
+     * <p>
+     * See {@link DeviceInformationCommand}
+     */
+    DEVICE_INFORMATION_COMMAND(0x1000, 2, DeviceInformationCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * DEVICE_INFORMATION_RESPONSE: Device Information Response
+     * <p>
+     * See {@link DeviceInformationResponse}
+     */
+    DEVICE_INFORMATION_RESPONSE(0x1000, 3, DeviceInformationResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    /**
      * DISCOVER_ATTRIBUTES_COMMAND: Discover Attributes Command
      * <p>
      * See {@link DiscoverAttributesCommand}
@@ -272,7 +299,8 @@ public enum ZclCommandType {
      * <p>
      * See {@link DiscoverAttributesExtendedResponse}
      */
-    DISCOVER_ATTRIBUTES_EXTENDED_RESPONSE(0xFFFF, 22, DiscoverAttributesExtendedResponse.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    DISCOVER_ATTRIBUTES_EXTENDED_RESPONSE(0xFFFF, 22, DiscoverAttributesExtendedResponse.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * DISCOVER_ATTRIBUTES_RESPONSE: Discover Attributes Response
      * <p>
@@ -290,7 +318,8 @@ public enum ZclCommandType {
      * <p>
      * See {@link DiscoverCommandsGeneratedResponse}
      */
-    DISCOVER_COMMANDS_GENERATED_RESPONSE(0xFFFF, 20, DiscoverCommandsGeneratedResponse.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    DISCOVER_COMMANDS_GENERATED_RESPONSE(0xFFFF, 20, DiscoverCommandsGeneratedResponse.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * DISCOVER_COMMANDS_RECEIVED: Discover Commands Received
      * <p>
@@ -302,13 +331,20 @@ public enum ZclCommandType {
      * <p>
      * See {@link DiscoverCommandsReceivedResponse}
      */
-    DISCOVER_COMMANDS_RECEIVED_RESPONSE(0xFFFF, 18, DiscoverCommandsReceivedResponse.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    DISCOVER_COMMANDS_RECEIVED_RESPONSE(0xFFFF, 18, DiscoverCommandsReceivedResponse.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * EMERGENCY_COMMAND: Emergency Command
      * <p>
      * See {@link EmergencyCommand}
      */
     EMERGENCY_COMMAND(0x0501, 2, EmergencyCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * ENDPOINT_INFORMATION_COMMAND: Endpoint Information Command
+     * <p>
+     * See {@link EndpointInformationCommand}
+     */
+    ENDPOINT_INFORMATION_COMMAND(0x1000, 64, EndpointInformationCommand.class, ZclCommandDirection.SERVER_TO_CLIENT),
     /**
      * FIRE_COMMAND: Fire Command
      * <p>
@@ -332,7 +368,26 @@ public enum ZclCommandType {
      * <p>
      * See {@link GetDeviceConfigurationCommand}
      */
-    GET_DEVICE_CONFIGURATION_COMMAND(0x000B, 2, GetDeviceConfigurationCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    GET_DEVICE_CONFIGURATION_COMMAND(0x000B, 2, GetDeviceConfigurationCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * GET_ENDPOINT_LIST_COMMAND: Get Endpoint List Command
+     * <p>
+     * See {@link GetEndpointListCommand}
+     */
+    GET_ENDPOINT_LIST_COMMAND(0x1000, 66, GetEndpointListCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * GET_ENDPOINT_LIST_RESPONSE: Get Endpoint List Response
+     * <p>
+     * See {@link GetEndpointListResponse}
+     */
+    GET_ENDPOINT_LIST_RESPONSE(0x1000, 66, GetEndpointListResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    /**
+     * GET_GROUP_IDENTIFIERS_COMMAND: Get Group Identifiers Command
+     * <p>
+     * See {@link GetGroupIdentifiersCommand}
+     */
+    GET_GROUP_IDENTIFIERS_COMMAND(0x1000, 65, GetGroupIdentifiersCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * GET_GROUP_MEMBERSHIP_COMMAND: Get Group Membership Command
      * <p>
@@ -458,7 +513,8 @@ public enum ZclCommandType {
      * <p>
      * See {@link LocationDataNotificationCommand}
      */
-    LOCATION_DATA_NOTIFICATION_COMMAND(0x000B, 2, LocationDataNotificationCommand.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    LOCATION_DATA_NOTIFICATION_COMMAND(0x000B, 2, LocationDataNotificationCommand.class,
+            ZclCommandDirection.SERVER_TO_CLIENT),
     /**
      * LOCATION_DATA_RESPONSE: Location Data Response
      * <p>
@@ -512,13 +568,15 @@ public enum ZclCommandType {
      * <p>
      * See {@link MoveToColorTemperatureCommand}
      */
-    MOVE_TO_COLOR_TEMPERATURE_COMMAND(0x0300, 10, MoveToColorTemperatureCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    MOVE_TO_COLOR_TEMPERATURE_COMMAND(0x0300, 10, MoveToColorTemperatureCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * MOVE_TO_HUE_AND_SATURATION_COMMAND: Move to Hue and Saturation Command
      * <p>
      * See {@link MoveToHueAndSaturationCommand}
      */
-    MOVE_TO_HUE_AND_SATURATION_COMMAND(0x0300, 6, MoveToHueAndSaturationCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    MOVE_TO_HUE_AND_SATURATION_COMMAND(0x0300, 6, MoveToHueAndSaturationCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * MOVE_TO_HUE_COMMAND: Move to Hue Command
      * <p>
@@ -536,7 +594,8 @@ public enum ZclCommandType {
      * <p>
      * See {@link MoveToLevelWithOnOffCommand}
      */
-    MOVE_TO_LEVEL__WITH_ON_OFF__COMMAND(0x0008, 4, MoveToLevelWithOnOffCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    MOVE_TO_LEVEL__WITH_ON_OFF__COMMAND(0x0008, 4, MoveToLevelWithOnOffCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * MOVE_TO_SATURATION_COMMAND: Move to Saturation Command
      * <p>
@@ -549,6 +608,50 @@ public enum ZclCommandType {
      * See {@link MoveWithOnOffCommand}
      */
     MOVE__WITH_ON_OFF__COMMAND(0x0008, 5, MoveWithOnOffCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * NETWORK_JOIN_END_DEVICE_COMMAND: Network Join End Device Command
+     * <p>
+     * See {@link NetworkJoinEndDeviceCommand}
+     */
+    NETWORK_JOIN_END_DEVICE_COMMAND(0x1000, 20, NetworkJoinEndDeviceCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * NETWORK_JOIN_END_DEVICE_RESPONSE: Network Join End Device Response
+     * <p>
+     * See {@link NetworkJoinEndDeviceResponse}
+     */
+    NETWORK_JOIN_END_DEVICE_RESPONSE(0x1000, 21, NetworkJoinEndDeviceResponse.class,
+            ZclCommandDirection.SERVER_TO_CLIENT),
+    /**
+     * NETWORK_JOIN_ROUTER_COMMAND: Network Join Router Command
+     * <p>
+     * See {@link NetworkJoinRouterCommand}
+     */
+    NETWORK_JOIN_ROUTER_COMMAND(0x1000, 18, NetworkJoinRouterCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * NETWORK_JOIN_ROUTER_RESPONSE: Network Join Router Response
+     * <p>
+     * See {@link NetworkJoinRouterResponse}
+     */
+    NETWORK_JOIN_ROUTER_RESPONSE(0x1000, 19, NetworkJoinRouterResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    /**
+     * NETWORK_START_COMMAND: Network Start Command
+     * <p>
+     * See {@link NetworkStartCommand}
+     */
+    NETWORK_START_COMMAND(0x1000, 16, NetworkStartCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * NETWORK_START_RESPONSE: Network Start Response
+     * <p>
+     * See {@link NetworkStartResponse}
+     */
+    NETWORK_START_RESPONSE(0x1000, 17, NetworkStartResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    /**
+     * NETWORK_UPDATE_COMMAND: Network Update Command
+     * <p>
+     * See {@link NetworkUpdateCommand}
+     */
+    NETWORK_UPDATE_COMMAND(0x1000, 22, NetworkUpdateCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * OFF_COMMAND: Off Command
      * <p>
@@ -608,19 +711,22 @@ public enum ZclCommandType {
      * <p>
      * See {@link ReadAttributesStructuredCommand}
      */
-    READ_ATTRIBUTES_STRUCTURED_COMMAND(0xFFFF, 14, ReadAttributesStructuredCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    READ_ATTRIBUTES_STRUCTURED_COMMAND(0xFFFF, 14, ReadAttributesStructuredCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * READ_REPORTING_CONFIGURATION_COMMAND: Read Reporting Configuration Command
      * <p>
      * See {@link ReadReportingConfigurationCommand}
      */
-    READ_REPORTING_CONFIGURATION_COMMAND(0xFFFF, 8, ReadReportingConfigurationCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    READ_REPORTING_CONFIGURATION_COMMAND(0xFFFF, 8, ReadReportingConfigurationCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * READ_REPORTING_CONFIGURATION_RESPONSE: Read Reporting Configuration Response
      * <p>
      * See {@link ReadReportingConfigurationResponse}
      */
-    READ_REPORTING_CONFIGURATION_RESPONSE(0xFFFF, 9, ReadReportingConfigurationResponse.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    READ_REPORTING_CONFIGURATION_RESPONSE(0xFFFF, 9, ReadReportingConfigurationResponse.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * RECALL_SCENE_COMMAND: Recall Scene Command
      * <p>
@@ -680,7 +786,8 @@ public enum ZclCommandType {
      * <p>
      * See {@link ReportRssiMeasurementsCommand}
      */
-    REPORT_RSSI_MEASUREMENTS_COMMAND(0x000B, 6, ReportRssiMeasurementsCommand.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    REPORT_RSSI_MEASUREMENTS_COMMAND(0x000B, 6, ReportRssiMeasurementsCommand.class,
+            ZclCommandDirection.SERVER_TO_CLIENT),
     /**
      * REQUEST_OWN_LOCATION_COMMAND: Request Own Location Command
      * <p>
@@ -710,19 +817,28 @@ public enum ZclCommandType {
      * <p>
      * See {@link ResetStartupParametersCommand}
      */
-    RESET_STARTUP_PARAMETERS_COMMAND(0x0015, 3, ResetStartupParametersCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    RESET_STARTUP_PARAMETERS_COMMAND(0x0015, 3, ResetStartupParametersCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * RESET_STARTUP_PARAMETERS_RESPONSE: Reset Startup Parameters Response
      * <p>
      * See {@link ResetStartupParametersResponse}
      */
-    RESET_STARTUP_PARAMETERS_RESPONSE(0x0015, 3, ResetStartupParametersResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    RESET_STARTUP_PARAMETERS_RESPONSE(0x0015, 3, ResetStartupParametersResponse.class,
+            ZclCommandDirection.SERVER_TO_CLIENT),
     /**
      * RESET_TO_FACTORY_DEFAULTS_COMMAND: Reset to Factory Defaults Command
      * <p>
      * See {@link ResetToFactoryDefaultsCommand}
      */
-    RESET_TO_FACTORY_DEFAULTS_COMMAND(0x0000, 0, ResetToFactoryDefaultsCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    RESET_TO_FACTORY_DEFAULTS_COMMAND(0x0000, 0, ResetToFactoryDefaultsCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * RESET_TO_FACTORY_NEW_COMMAND: Reset to Factory New Command
+     * <p>
+     * See {@link ResetToFactoryNewCommand}
+     */
+    RESET_TO_FACTORY_NEW_COMMAND(0x1000, 7, ResetToFactoryNewCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * RESTART_DEVICE_COMMAND: Restart Device Command
      * <p>
@@ -734,19 +850,22 @@ public enum ZclCommandType {
      * <p>
      * See {@link RestartDeviceResponseResponse}
      */
-    RESTART_DEVICE_RESPONSE_RESPONSE(0x0015, 0, RestartDeviceResponseResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    RESTART_DEVICE_RESPONSE_RESPONSE(0x0015, 0, RestartDeviceResponseResponse.class,
+            ZclCommandDirection.SERVER_TO_CLIENT),
     /**
      * RESTORE_STARTUP_PARAMETERS_COMMAND: Restore Startup Parameters Command
      * <p>
      * See {@link RestoreStartupParametersCommand}
      */
-    RESTORE_STARTUP_PARAMETERS_COMMAND(0x0015, 2, RestoreStartupParametersCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    RESTORE_STARTUP_PARAMETERS_COMMAND(0x0015, 2, RestoreStartupParametersCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * RESTORE_STARTUP_PARAMETERS_RESPONSE: Restore Startup Parameters Response
      * <p>
      * See {@link RestoreStartupParametersResponse}
      */
-    RESTORE_STARTUP_PARAMETERS_RESPONSE(0x0015, 2, RestoreStartupParametersResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    RESTORE_STARTUP_PARAMETERS_RESPONSE(0x0015, 2, RestoreStartupParametersResponse.class,
+            ZclCommandDirection.SERVER_TO_CLIENT),
     /**
      * RSSI_PING_COMMAND: RSSI Ping Command
      * <p>
@@ -770,13 +889,27 @@ public enum ZclCommandType {
      * <p>
      * See {@link SaveStartupParametersCommand}
      */
-    SAVE_STARTUP_PARAMETERS_COMMAND(0x0015, 1, SaveStartupParametersCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    SAVE_STARTUP_PARAMETERS_COMMAND(0x0015, 1, SaveStartupParametersCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * SAVE_STARTUP_PARAMETERS_RESPONSE: Save Startup Parameters Response
      * <p>
      * See {@link SaveStartupParametersResponse}
      */
-    SAVE_STARTUP_PARAMETERS_RESPONSE(0x0015, 1, SaveStartupParametersResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
+    SAVE_STARTUP_PARAMETERS_RESPONSE(0x0015, 1, SaveStartupParametersResponse.class,
+            ZclCommandDirection.SERVER_TO_CLIENT),
+    /**
+     * SCAN_COMMAND: Scan Command
+     * <p>
+     * See {@link ScanCommand}
+     */
+    SCAN_COMMAND(0x1000, 0, ScanCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    /**
+     * SCAN_RESPONSE: Scan Response
+     * <p>
+     * See {@link ScanResponse}
+     */
+    SCAN_RESPONSE(0x1000, 1, ScanResponse.class, ZclCommandDirection.SERVER_TO_CLIENT),
     /**
      * SEND_PINGS_COMMAND: Send Pings Command
      * <p>
@@ -800,7 +933,8 @@ public enum ZclCommandType {
      * <p>
      * See {@link SetDeviceConfigurationCommand}
      */
-    SET_DEVICE_CONFIGURATION_COMMAND(0x000B, 1, SetDeviceConfigurationCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    SET_DEVICE_CONFIGURATION_COMMAND(0x000B, 1, SetDeviceConfigurationCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * SET_WEEKLY_SCHEDULE: Set Weekly Schedule
      * <p>
@@ -950,19 +1084,22 @@ public enum ZclCommandType {
      * <p>
      * See {@link WriteAttributesStructuredCommand}
      */
-    WRITE_ATTRIBUTES_STRUCTURED_COMMAND(0xFFFF, 15, WriteAttributesStructuredCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    WRITE_ATTRIBUTES_STRUCTURED_COMMAND(0xFFFF, 15, WriteAttributesStructuredCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * WRITE_ATTRIBUTES_STRUCTURED_RESPONSE: Write Attributes Structured Response
      * <p>
      * See {@link WriteAttributesStructuredResponse}
      */
-    WRITE_ATTRIBUTES_STRUCTURED_RESPONSE(0xFFFF, 16, WriteAttributesStructuredResponse.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    WRITE_ATTRIBUTES_STRUCTURED_RESPONSE(0xFFFF, 16, WriteAttributesStructuredResponse.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * WRITE_ATTRIBUTES_UNDIVIDED_COMMAND: Write Attributes Undivided Command
      * <p>
      * See {@link WriteAttributesUndividedCommand}
      */
-    WRITE_ATTRIBUTES_UNDIVIDED_COMMAND(0xFFFF, 3, WriteAttributesUndividedCommand.class, ZclCommandDirection.CLIENT_TO_SERVER),
+    WRITE_ATTRIBUTES_UNDIVIDED_COMMAND(0xFFFF, 3, WriteAttributesUndividedCommand.class,
+            ZclCommandDirection.CLIENT_TO_SERVER),
     /**
      * ZONE_ENROLL_REQUEST_COMMAND: Zone Enroll Request Command
      * <p>
@@ -980,14 +1117,16 @@ public enum ZclCommandType {
      * <p>
      * See {@link ZoneStatusChangeNotificationCommand}
      */
-    ZONE_STATUS_CHANGE_NOTIFICATION_COMMAND(0x0500, 0, ZoneStatusChangeNotificationCommand.class, ZclCommandDirection.SERVER_TO_CLIENT);
+    ZONE_STATUS_CHANGE_NOTIFICATION_COMMAND(0x0500, 0, ZoneStatusChangeNotificationCommand.class,
+            ZclCommandDirection.SERVER_TO_CLIENT);
 
     private final int commandId;
     private final int clusterType;
     private final Class<? extends ZclCommand> commandClass;
     private final ZclCommandDirection direction;
 
-    ZclCommandType(final int clusterType, final int commandId, final Class<? extends ZclCommand> commandClass, final ZclCommandDirection direction) {
+    ZclCommandType(final int clusterType, final int commandId, final Class<? extends ZclCommand> commandClass,
+            final ZclCommandDirection direction) {
         this.clusterType = clusterType;
         this.commandId = commandId;
         this.commandClass = commandClass;
@@ -1003,7 +1142,7 @@ public enum ZclCommandType {
     }
 
     public boolean isGeneric() {
-        return clusterType==0xFFFF;
+        return clusterType == 0xFFFF;
     }
 
     public ZclCommandDirection getDirection() {
@@ -1014,7 +1153,7 @@ public enum ZclCommandType {
         return commandClass;
     }
 
-        public static ZclCommandType getCommandType(final int clusterType, final int commandId,
+    public static ZclCommandType getCommandType(final int clusterType, final int commandId,
 
             ZclCommandDirection direction) {
 

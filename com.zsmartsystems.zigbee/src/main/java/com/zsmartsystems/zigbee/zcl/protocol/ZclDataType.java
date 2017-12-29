@@ -27,7 +27,7 @@ import com.zsmartsystems.zigbee.ExtendedPanId;
 public enum ZclDataType {
     BITMAP_16_BIT("16-bit Bitmap", Integer.class, 0x19, false),
     BITMAP_32_BIT("32-bit Bitmap", Integer.class, 0x1B, false),
-    BITMAP_8_BIT("Bitmap 8-bit", Integer.class, 0x18, false),
+    BITMAP_8_BIT("8-bit bitmap", Integer.class, 0x18, false),
     BOOLEAN("Boolean", Boolean.class, 0x10, false),
     BYTE_ARRAY("Byte array", ByteArray.class, 0x00, false),
     CHARACTER_STRING("Character string", String.class, 0x42, false),
